@@ -10,7 +10,7 @@ function Player2Card(){
         <div>
             <h2>Player 2</h2>
             <div>{colors.map((colors, index )=>
-                    <div style={{ backgroundColor: `${colors}`, boxShadow: "0 2px 0 0 black" }}> 
+                    <div style={{ backgroundColor: `${colors}`, boxShadow: "0 2px 0 0 black" }} key = {index}> 
                         {colors}
                     </div> 
                 )}</div>
@@ -21,7 +21,7 @@ function Player2Card(){
             <div>
                 <h2>Player 2</h2>
                 <div>{colors.map((colors, index )=>
-                        <div style={{ backgroundColor: `${colors}`}}> 
+                        <div style={{ backgroundColor: `${colors}`}} key = {index}> 
                             {colors}
                         </div> 
                     )}</div>

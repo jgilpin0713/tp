@@ -18,7 +18,7 @@ function Game(){
             
     return (
         <div>
-            <h1>This is the game!</h1>
+            <h1>Trivial Pursuit</h1>
             <GameBoard />
             <Player />
             <GameStats />

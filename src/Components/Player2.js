@@ -1,5 +1,5 @@
 import React from "react"
-import Piece2 from "./Piece.js"
+import Piece2 from "./Piece2"
 
 function Player2(){
     return(

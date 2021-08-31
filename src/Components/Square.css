@@ -1,0 +1,24 @@
+.BoardSquare{
+    height: 25px;
+    width: 25px;
+    font-size: 1.5vw;
+    color: black ;
+    text-align: center;
+    height: 5vw;
+    width: 5vw;
+    font: "Century Gothic", Futura, sans-serif;
+    position: relative;
+    border: .5px solid lightgray;
+}
+
+.Piece {
+    width: 0;
+    height: 0;
+    border-left: 2vw solid transparent;
+    border-right: 2vw solid transparent;
+    border-bottom: 2vw solid black;
+    position:absolute;
+    top: 25%;
+    left: 15%;
+    
+}

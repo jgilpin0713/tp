@@ -2,8 +2,6 @@ import React from "react"
 import Piece1 from "./Piece1.js"
 
 
-
-
 function Player1(){
           // keeps track of location
     return(

@@ -1,7 +1,7 @@
-.Piece {
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
+.GameBoard {
+    display: flex;
+    grid-template-columns: repeat(13);
+    grid-template-rows: 50px 50px;
     align-items: center;
 	justify-content: center;
 }

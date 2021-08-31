@@ -6,7 +6,8 @@ const INITIAL_STATE = {
     "isActive": true, 
     "isPiece": false,
     "isPlayable": true, 
-    "color": "pink"
+    "color": "pink",
+    "grid": []
 }
 
 function squareReducer(state = INITIAL_STATE, action){
