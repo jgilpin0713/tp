@@ -1,0 +1,13 @@
+.Piece {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    align-items: center;
+	justify-content: center;
+}
+
+.Container {
+    align-items: center;
+	justify-content: center;
+    display: flex;
+}
