@@ -1,12 +1,16 @@
 import React from "react"
 import Piece1 from "./Piece1.js"
+import {useDispatch} from "react-redux"
+import { getColor } from "../actions/actionCreators.js"
 
 
-function Player1(){
-          // keeps track of location
+
+function Player1({color}){
+    let dispatch = useDispatch()
+    dispatch(getColor(color))
+
     return(
         <div>
-            <h3>Player 1</h3>
             <Piece1 />
         </div>
     )

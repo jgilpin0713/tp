@@ -1,8 +1,8 @@
-import { MOVES_LEFT, ANSWER, BLUE_SQUARE, ERROR, FETCH_BLUE, FETCH_GREEN, FETCH_ORANGE, FETCH_PINK, FETCH_PURPLE, 
+import { MOVES_LEFT, GET_COLOR, BLUE_SQUARE, ERROR, FETCH_BLUE, FETCH_GREEN, FETCH_ORANGE, FETCH_PINK, FETCH_PURPLE, 
     FETCH_YELLOW, GET_QUESTION, GRAY_SQUARE, GREEN_SQUARE, MOVE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, 
     MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT, NEXT_ORANGE_INDEX, NOT_BOARD, ORANGE_SQUARE, PINK_SQUARE, PLAYER_PIECE, PURPLE_SQUARE, 
     ROLL, ROLL_DICE, TO_PLAYER1, TO_PLAYER2, TURN_END, WHITE_SQUARE, YELLOW_SQUARE, COLLECT_PIECE, NEXT_PINK_INDEX, NEXT_BLUE_INDEX,
-    NEXT_GREEN_INDEX, NEXT_PURPLE_INDEX, NEXT_YELLOW_INDEX } from "./actiontypes";
+    NEXT_GREEN_INDEX, NEXT_PURPLE_INDEX, NEXT_YELLOW_INDEX, MAKE_BOARD } from "./actiontypes";
 import axios from "axios"
 const BASE_API_URL = "https://opentdb.com/api.php?amount=50&category=";
 
@@ -312,9 +312,10 @@ export function move(){
     }
 }
 
-export function answer(){
+export function getColor(color){
     return{
-        type:ANSWER
+        type:GET_COLOR,
+        payload: color
     }
 }
 
@@ -327,5 +328,12 @@ export function questions(){
 export function collectPiece(){
     return{
         type:COLLECT_PIECE
+    }
+}
+
+export function makeBoard(squares){
+    return{
+        type:MAKE_BOARD,
+        payload: [...squares]
     }
 }

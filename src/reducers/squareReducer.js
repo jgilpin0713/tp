@@ -3,11 +3,9 @@ import { BLUE_SQUARE, GRAY_SQUARE, GREEN_SQUARE, NOT_BOARD, ORANGE_SQUARE, PINK_
 
 
 const INITIAL_STATE = {
-    "isActive": true, 
+    "isActive": false, 
     "isPiece": false,
-    "isPlayable": true, 
-    "color": "pink",
-    "grid": []
+    "isPlayable": true
 }
 
 function squareReducer(state = INITIAL_STATE, action){

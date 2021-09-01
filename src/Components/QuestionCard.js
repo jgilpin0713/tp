@@ -8,7 +8,7 @@ import Purple from "../categories/purple"
 import Yellow from "../categories/yellow"
 
 function QuestionCard(){
-    let squareColor = useSelector(state => state.squares.color)
+    let squareColor = useSelector(state => state.player1.squareColor)
     let isActive = useSelector(state => state.squares.isActive)
     let toAnswer1 = useSelector(state => state.player1.action)
     let toAnswer2 = useSelector(state => state.player2.action)
@@ -16,8 +16,8 @@ function QuestionCard(){
     //console.log(orange)
     
     console.log(squareColor)
-    //console.log(isActive)
-    //console.log(toAnswer)
+    console.log(isActive)
+    console.log(toAnswer1, toAnswer2)
 
     if (isActive && squareColor === "orange"&& (toAnswer1 === "Get" || toAnswer2 === "Get")){
         return (

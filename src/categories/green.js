@@ -49,7 +49,7 @@ function Green(){
         <div>
             <h4>{currentQ}</h4>
             <h5>{guesses.map((answers, index )=>
-                    <button onClick = {() => handleClick(answers)}> {answers} </button>
+                    <button onClick = {() => handleClick(answers)}key = {index}> {answers} </button>
                 )}</h5>
         </div>
     )

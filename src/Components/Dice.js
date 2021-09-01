@@ -1,13 +1,9 @@
 import React, {useState} from "react"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { rollDice, movesLeft } from "../actions/actionCreators";
 
 
 function Dice (){
-    const roll = useSelector(state => state.dice.roll)
-    console.log(roll)
-    const moves = useSelector(state => state.dice.movesLeft)
-    console.log(moves)
     let dispatch = useDispatch()
 
 	const [DieResult, setDieResult] = useState(1);
@@ -19,8 +15,7 @@ function Dice (){
 		//trigger the re render of the die image. 
         dispatch(rollDice(DieResult))
         dispatch(movesLeft(DieResult))
-        console.log(roll)
-        console.log(moves)
+
 	}
   
 	return (

@@ -1,5 +1,6 @@
 import React from "react"
 import {useSelector} from "react-redux"
+import Piece1 from "./Piece1"
 
 function Player1Card(){
     let colors = useSelector(state => state.player1.colorsWon)
@@ -8,7 +9,8 @@ function Player1Card(){
     if(turn === 1){
     return(
         <div>
-            <h2>Player 1</h2>
+            <h2>Player 1<Piece1 /> </h2> 
+            <p>Pieces Won:</p>
             <div>{colors.map((colors, index )=>
                     <div style={{ backgroundColor: `${colors}`, boxShadow: "0 2px 0 0 black" }} key = {index}> 
                         {colors}
@@ -19,7 +21,8 @@ function Player1Card(){
     } else {
         return(
             <div>
-                <h2>Player 1</h2>
+                <h2>Player 1<Piece1 /></h2>
+                <p>Pieces Won:</p>
                 <div>{colors.map((colors, index )=>
                         <div style={{ backgroundColor: `${colors}`}}> 
                             {colors}

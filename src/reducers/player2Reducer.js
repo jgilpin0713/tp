@@ -1,13 +1,13 @@
-import { ROLL, MOVE, GET_QUESTION, ANSWER, COLLECT_PIECE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT } from "../actions/actiontypes";
+import { ROLL, MOVE, GET_QUESTION, COLLECT_PIECE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT, GET_COLOR } from "../actions/actiontypes";
 
 
 const INITIAL_STATE = {
     "squareColor":"white",
-    "col": 7,
-    "row": 7,
+    "col": 6,
+    "row": 6,
     "movesLeft":0,
-    "colorsWon":["orange", "yellow", "green"],
-    "action": "Get"
+    "colorsWon":[],
+    "action": "Roll"
 }
 
 function player2Reducer(state = INITIAL_STATE, action){
@@ -32,8 +32,8 @@ function player2Reducer(state = INITIAL_STATE, action){
             return {...state, colorsWon: [..."colorsWon", "squareColor"]}
         case ROLL:
             return {...state, action: "Roll"}
-        case ANSWER:
-            return {...state, action: "Answer"}
+        case GET_COLOR:
+            return {...state, squareColor: action.payload}
         case GET_QUESTION:
             return {...state, action: "Get"}
         case MOVE:

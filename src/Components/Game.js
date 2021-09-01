@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 import GameBoard from "./GameBoard"
-import Player from "./Player"
 import GameStats from "./GameStats"
 import LoadGame from "../LoadGame"
+import Turn from "../GamePlay/Turn"
 
 function Game(){
     const [isLoading, setIsLoading] = useState(true)
@@ -20,8 +20,8 @@ function Game(){
         <div>
             <h1>Trivial Pursuit</h1>
             <GameBoard />
-            <Player />
             <GameStats />
+            <Turn />
         </div>
     )
     }
