@@ -1,23 +1,60 @@
-import React, {useState} from "react"
-import { useDispatch } from "react-redux";
-import { rollDice, movesLeft } from "../actions/actionCreators";
+import React, {useState, useEffect} from "react"
+import { useDispatch, useSelector } from "react-redux";
+import { rollDice, movesLeft, move, rollDice2, move2, movesLeft2 } from "../actions/actionCreators";
+import zero from "./assets/0.png"
+import one from "./assets/1.png"
+import two from "./assets/2.png"
+import three from "./assets/3.png"
+import four from "./assets/4.png"
+import five from "./assets/5.png"
+import six from "./assets/6.png"
 
 
 function Dice (){
     let dispatch = useDispatch()
+	let turn = useSelector(state => state.turn.player)
 
-	const [DieResult, setDieResult] = useState(1);
-	const DieImage = require(`./assets/${DieResult}.png`);
+	const [DieResult, setDieResult] = useState(0);
+	let DieImage;
+		if(DieResult === 0){
+			DieImage = zero
+		} else if (DieResult === 1){
+			DieImage = one
+		}else if (DieResult === 2){
+			DieImage = two
+		}else if (DieResult === 3){
+			DieImage = three
+		}else if (DieResult === 4){
+			DieImage = four
+		}else if (DieResult === 5){
+			DieImage = five
+		}else if (DieResult === 6){
+			DieImage = six
+		}
   
 	function setDice() {
 	  setDieResult(Math.floor(Math.random() * 6) + 1);
-		// what to add here for bounce after click -set timeout - create state for the bounce
-		//trigger the re render of the die image. 
-        dispatch(rollDice(DieResult))
-        dispatch(movesLeft(DieResult))
-
+	 if(turn === 1){
+		dispatch(move()) 
+	 } else {
+		 dispatch(move2())
+	 }
+	  
 	}
-  
+
+	useEffect (() => {
+		
+		if (turn === 1){
+			dispatch(movesLeft(DieResult))
+			dispatch(rollDice(DieResult))	
+		}else {
+			dispatch(movesLeft2)
+			dispatch(rollDice2(DieResult))
+		}
+		
+    }, [dispatch, DieResult, turn])
+
+	
 	return (
 	  <div className="Dice">
 		<header className="Dice-header">

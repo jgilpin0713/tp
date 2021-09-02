@@ -1,43 +1,45 @@
-import { ROLL, MOVE, GET_QUESTION, COLLECT_PIECE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT, GET_COLOR } from "../actions/actiontypes";
+import { MOVES_LEFT2, ROLL2, MOVE2, GET_QUESTION2, COLLECT_PIECE2, MOVE_DOWN2, MOVE_DOWN_LEFT2, MOVE_DOWN_RIGHT2, MOVE_LEFT2, MOVE_RIGHT2, MOVE_UP2, MOVE_UP_LEFT2, MOVE_UP_RIGHT2, GET_COLOR2 } from "../actions/actiontypes";
 
 
 const INITIAL_STATE = {
-    "squareColor":"white",
-    "col": 6,
-    "row": 6,
-    "movesLeft":0,
-    "colorsWon":[],
-    "action": "Roll"
+    "squareColor2":"white",
+    "col2": 6,
+    "row2": 6,
+    "movesLeft2":0,
+    "colorsWon2":[],
+    "action2": "Roll"
 }
 
 function player2Reducer(state = INITIAL_STATE, action){
     switch(action.type){
-        case MOVE_LEFT:
-            return {...state, col: state - 1, movesLeft: state - 1}
-        case MOVE_RIGHT:
-            return {...state, row: state + 1, movesLeft: state - 1};
-        case MOVE_UP:
-            return {...state, col: state + 1, movesLeft: state - 1}
-        case MOVE_DOWN:
-            return {...state, col: state + 1, movesLeft: state - 1}
-        case MOVE_DOWN_LEFT:
-            return {...state, row: state - 1, col: state - 1 ,movesLeft: state - 1}
-        case MOVE_DOWN_RIGHT:
-            return {...state, row: state + 1, col: state - 1 ,movesLeft: state - 1}
-        case MOVE_UP_LEFT:
-            return {...state, row: state - 1, col: state + 1 ,movesLeft: state - 1}
-        case MOVE_UP_RIGHT:
-            return {...state, row: state + 1, col: state + 1 ,movesLeft: state - 1}
-        case COLLECT_PIECE:
-            return {...state, colorsWon: [..."colorsWon", "squareColor"]}
-        case ROLL:
-            return {...state, action: "Roll"}
-        case GET_COLOR:
-            return {...state, squareColor: action.payload}
-        case GET_QUESTION:
-            return {...state, action: "Get"}
-        case MOVE:
-            return {...state, action: "Move"}
+        case MOVES_LEFT2:
+            return{...state, movesLeft2: action.payload}
+        case MOVE_LEFT2:
+            return {...state, row2: state.row2 - 1, movesLeft2: state.movesLeft2 - 1}
+        case MOVE_RIGHT2:
+            return {...state, row2: state.row2 + 1, movesLeft2: state.movesLeft2 - 1};
+        case MOVE_UP2:
+            return {...state, col2: state.col2 - 1, movesLeft2: state.movesLeft2 - 1}
+        case MOVE_DOWN2:
+            return {...state, col2: state.col2 + 1, movesLeft2: state.movesLeft2 - 1}
+        case MOVE_DOWN_LEFT2:
+            return {...state, col2: state.col2 + 1, row2: state.row2 - 1 ,movesLeft2: state.movesLeft2 - 1}
+        case MOVE_DOWN_RIGHT2:
+            return {...state, col2: state.col2 + 1, row2: state.row2 + 1 ,movesLeft2: state.movesLeft2 - 1}
+        case MOVE_UP_LEFT2:
+            return {...state, col2: state.col2 - 1, row: state.row2 - 1 ,movesLeft2: state.movesLeft2 - 1}
+        case MOVE_UP_RIGHT2:
+            return {...state, col: state.col2 - 1, row: state.row2 + 1 ,movesLeft2: state.movesLeft2 - 1}
+        case COLLECT_PIECE2:
+            return {...state, colorsWon: [...state.colorsWon2, state.squareColor2]}
+        case ROLL2:
+            return {...state, action2: "Roll"}
+        case GET_COLOR2:
+            return {...state, squareColor2: action.payload}
+        case GET_QUESTION2:
+            return {...state, action2: "Get"}
+        case MOVE2:
+            return {...state, action2: "Move"}
         default:
             return state
     }

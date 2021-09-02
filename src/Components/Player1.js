@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import Piece1 from "./Piece1.js"
 import {useDispatch} from "react-redux"
 import { getColor } from "../actions/actionCreators.js"
@@ -6,8 +6,13 @@ import { getColor } from "../actions/actionCreators.js"
 
 
 function Player1({color}){
+    
     let dispatch = useDispatch()
-    dispatch(getColor(color))
+   
+    useEffect (() => {
+       dispatch(getColor(color)) 
+    }, [dispatch, color])
+    
 
     return(
         <div>

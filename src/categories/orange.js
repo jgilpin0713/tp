@@ -1,6 +1,6 @@
-import React from "react"
+import React, {useEffect}  from "react"
 import { useDispatch, useSelector} from "react-redux"
-import { nextOrange, player1, player2, roll, collectPiece } from "../actions/actionCreators"
+import { nextOrange, player1, player2, roll, roll2, collectPiece, collectPiece2 } from "../actions/actionCreators"
 import shuffle from "../helpers/shuffle"
 
 
@@ -9,7 +9,7 @@ function Orange(){
     let dispatch = useDispatch()
     let orange = useSelector(state => state.question.orangeQuestions)
     let index = useSelector(state => state.question.orangeQIndex)
-    let turn = useSelector(state => state.turn)
+    let turn = useSelector(state => state.turn.player)
     let piece = useSelector(state => state.squares.isPiece)
     
     let questions = []
@@ -25,26 +25,66 @@ function Orange(){
 
 
     function handleClick(answers){
-        console.log(answers)
-        console.log(correct)
+        
         if(answers === correct && piece){
-            dispatch(roll())
-            dispatch(collectPiece())
-        } else if(answers === correct){
-            dispatch(roll())
-        }else {
-            if (turn === 2){
+            if(turn === 1){
+                dispatch(collectPiece())
                 dispatch(roll())
-                dispatch(player1())
+            return(
+                <div>
+                    <p>You won a piece! Your answer was Correct</p>
+                </div>
+            )
             } else {
-                
-                dispatch(player2())
+                dispatch(collectPiece2())
+                dispatch(roll2())
+                return(
+                    <div>
+                        <p>You won a piece! Your answer was Correct</p>
+                    </div>
+                )
+            }
+        } else if(answers === correct && !piece){
+            if(turn === 1){
                 dispatch(roll())
+            return(
+                <div>
+                    <p>Your answer was Correct</p>
+                </div>
+            )
+            } else {
+                dispatch(roll2())
+                return(
+                    <div>
+                        <p>Your answer was Correct</p>
+                    </div>
+                )
+            }
+        } else if(answers !== correct){
+            if (turn === 2){
+                dispatch(player1())
+                dispatch(roll())
+                return(
+                    <div>
+                        <p>I'm sorry your answer was incorrect it's Player 1's Turn now</p>
+                    </div>
+                )
+            } else {
+                dispatch(player2())
+                dispatch(roll2())
+                return(
+                    <div>
+                        <p>I'm sorry your answer was incorrect it's Player 2's Turn now</p>
+                    </div>
+                )
             }
         }
-        dispatch(nextOrange())
+    
     }
-   
+    useEffect (() => {
+        dispatch(nextOrange())
+    }, [dispatch])
+    
     return(
         <div>
             <h4>{currentQ}</h4>

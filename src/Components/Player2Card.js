@@ -3,7 +3,7 @@ import {useSelector} from "react-redux"
 import Piece2 from "./Piece2"
 
 function Player2Card(){
-    let colors = useSelector(state => state.player2.colorsWon)
+    let colors = useSelector(state => state.player2.colorsWon2)
     let turn = useSelector(state => state.turn.player)
 
     if(turn === 2){

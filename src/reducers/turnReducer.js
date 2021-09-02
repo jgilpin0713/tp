@@ -11,7 +11,7 @@ function turnReducer(state = INITIAL_STATE, action){
         case TO_PLAYER1:
             return {...state, player:1}
         case TO_PLAYER2:
-            return {...state, player:1}
+            return {...state, player:2}
         case MAKE_BOARD:
             return{...state, board:action.payload}
         default:

@@ -8,7 +8,7 @@
     width: 5vw;
     font: "Century Gothic", Futura, sans-serif;
     position: relative;
-    border: .5px solid lightgray;
+    border: .5px solid lightslategray;
 }
 
 .PieceSquare {
@@ -19,5 +19,5 @@
     border-bottom: 2vw solid black;
     position:absolute;
     top: 25%;
-    left: 15%;
+    left: 10%;
 }

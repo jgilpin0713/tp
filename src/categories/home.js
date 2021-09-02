@@ -1,50 +1,87 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import Blue from "../categories/blue"
-import Orange from "../categories/orange"
-import Purple from "../categories/purple"
-import Green from "../categories/green"
-import Pink from "../categories/pink"
-import Yellow from "../categories/yellow"
+import {useDispatch, useSelector} from "react-redux"
+import {getColor, getColor2} from "../actions/actionCreators"
 
 function Home(){
-    //if color selected
-    let color = useSelector(state => state.player1.squareColor)
-    // need to change this when I decide how to do the pick a color option
-    if (color === "blue"){
+  let dispatch = useDispatch()
+  let turn = useSelector(state => state.turn.player)
+        function handlePink(){
+          if(turn === 1){
+            return(
+              dispatch(getColor("pink"))
+            )
+          } else {
+            return (
+            dispatch(getColor2("pink"))
+            )
+        }
+      }
+      function handleOrange(){
+        if(turn === 1){
+          return(
+            dispatch(getColor("orange"))
+          )
+        } else {
+          return (
+          dispatch(getColor2("orange"))
+          )
+      }
+    }
+    function handleBlue(){
+      if(turn === 1){
         return(
-          <Blue />  
+          dispatch(getColor("blue"))
         )
-        
-    } else if (color === "orange"){
-        return(
-            <Orange />  
-          )
+      } else {
+        return (
+        dispatch(getColor2("blue"))
+        )
     }
-    else if (color === "purple"){
-        return(
-            <Purple />  
-          )
     }
-    else if (color === "yellow"){
-        return(
-            <Yellow />  
+      function handleGreen(){
+        if(turn === 1){
+          return(
+            dispatch(getColor("green"))
           )
+        } else {
+          return (
+          dispatch(getColor2("green"))
+          )
+      }
     }
-    else if (color === "green"){
-        return(
-            <Green />  
+      function handleYellow(){
+        if(turn === 1){
+          return(
+            dispatch(getColor("yellow"))
           )
+        } else {
+          return (
+          dispatch(getColor2("yellow"))
+          )
+      }
     }
-    else if (color === "pink"){
+
+    function handlePurple(){
+      if(turn === 1){
         return(
-            <Pink />  
-          )
-    }else {
+          dispatch(getColor("purple"))
+        )
+      } else {
+        return (
+        dispatch(getColor2("purple"))
+        )
+    }
+  }
       return(
-        null
+        <div>
+          <button onClick = {handlePink}> Pink </button>
+          <button onClick = {handleBlue}> Blue </button>
+          <button onClick = {handleOrange}> Orange </button>
+          <button onClick = {handleGreen}> Green </button>
+          <button onClick = {handleYellow}> Yellow </button>
+          <button onClick = {handlePurple}> Purple </button>
+        </div>
     )
-    }
 }
 
 export default Home

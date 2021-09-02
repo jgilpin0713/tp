@@ -1,6 +1,6 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { useDispatch, useSelector} from "react-redux"
-import { nextGreen, player1, player2, roll, collectPiece } from "../actions/actionCreators"
+import { nextGreen, player1, player2, roll, collectPiece, collectPiece2, roll2 } from "../actions/actionCreators"
 import shuffle from "../helpers/shuffle"
 
 
@@ -25,25 +25,65 @@ function Green(){
 
 
     function handleClick(answers){
-        console.log(answers)
-        console.log(correct)
+        
         if(answers === correct && piece){
-            dispatch(roll())
-            dispatch(collectPiece())
-        } else if(answers === correct){
-            dispatch(roll())
-        }else {
-            if (turn === 2){
+            if(turn === 1){
+                dispatch(collectPiece())
                 dispatch(roll())
-                dispatch(player1())
+            return(
+                <div>
+                    <p>You won a piece! Your answer was Correct</p>
+                </div>
+            )
             } else {
-                
-                dispatch(player2())
+                dispatch(collectPiece2())
+                dispatch(roll2())
+                return(
+                    <div>
+                        <p>You won a piece! Your answer was Correct</p>
+                    </div>
+                )
+            }
+        } else if(answers === correct && !piece){
+            if(turn === 1){
                 dispatch(roll())
+            return(
+                <div>
+                    <p>Your answer was Correct</p>
+                </div>
+            )
+            } else {
+                dispatch(roll2())
+                return(
+                    <div>
+                        <p>Your answer was Correct</p>
+                    </div>
+                )
+            }
+        } else if(answers !== correct){
+            if (turn === 2){
+                dispatch(player1())
+                dispatch(roll())
+                return(
+                    <div>
+                        <p>I'm sorry your answer was incorrect it's Player 1's Turn now</p>
+                    </div>
+                )
+            } else {
+                dispatch(player2())
+                dispatch(roll2())
+                return(
+                    <div>
+                        <p>I'm sorry your answer was incorrect it's Player 2's Turn now</p>
+                    </div>
+                )
             }
         }
-        dispatch(nextGreen())
+    
     }
+    useEffect (() => {
+        dispatch(nextGreen())
+    }, [dispatch])
    
     return(
         <div>

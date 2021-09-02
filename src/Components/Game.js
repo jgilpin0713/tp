@@ -19,9 +19,12 @@ function Game(){
     return (
         <div>
             <h1>Trivial Pursuit</h1>
-            <GameBoard />
             <GameStats />
-            <Turn />
+            <div>
+               <Turn />  
+            </div>
+            <GameBoard />
+            
         </div>
     )
     }

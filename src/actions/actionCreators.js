@@ -2,21 +2,34 @@ import { MOVES_LEFT, GET_COLOR, BLUE_SQUARE, ERROR, FETCH_BLUE, FETCH_GREEN, FET
     FETCH_YELLOW, GET_QUESTION, GRAY_SQUARE, GREEN_SQUARE, MOVE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, 
     MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT, NEXT_ORANGE_INDEX, NOT_BOARD, ORANGE_SQUARE, PINK_SQUARE, PLAYER_PIECE, PURPLE_SQUARE, 
     ROLL, ROLL_DICE, TO_PLAYER1, TO_PLAYER2, TURN_END, WHITE_SQUARE, YELLOW_SQUARE, COLLECT_PIECE, NEXT_PINK_INDEX, NEXT_BLUE_INDEX,
-    NEXT_GREEN_INDEX, NEXT_PURPLE_INDEX, NEXT_YELLOW_INDEX, MAKE_BOARD } from "./actiontypes";
+    NEXT_GREEN_INDEX, NEXT_PURPLE_INDEX, NEXT_YELLOW_INDEX, MAKE_BOARD, MOVE_DOWN_RIGHT2, MOVE_UP2, MOVE_DOWN2, MOVE_UP_RIGHT2, 
+    MOVE_DOWN_LEFT2, MOVE_UP_LEFT2, MOVE_LEFT2, COLLECT_PIECE2, MOVES_LEFT2, GET_COLOR2, MOVE2, ROLL2, ROLL_DICE2 } from "./actiontypes";
 import axios from "axios"
 const BASE_API_URL = "https://opentdb.com/api.php?amount=50&category=";
 
 export function rollDice(dice){
     return {
         type:ROLL_DICE,
-        dice
+        payload: dice
+    }
+}
+export function rollDice2(dice){
+    return {
+        type:ROLL_DICE2,
+        payload: dice
     }
 }
 
 export function movesLeft(dice){
     return{
         type:MOVES_LEFT,
-        dice
+        payload: dice
+    }
+}
+export function movesLeft2(dice){
+    return{
+        type:MOVES_LEFT2,
+        payload: dice
     }
 }
 
@@ -335,5 +348,77 @@ export function makeBoard(squares){
     return{
         type:MAKE_BOARD,
         payload: [...squares]
+    }
+}
+
+export function moveLeft2(){
+    return{
+        type:MOVE_LEFT2
+    }
+}
+
+export function moveUpLeft2(){
+    return{
+        type:MOVE_UP_LEFT2
+    }
+}
+
+export function moveDownLeft2(){
+    return{
+        type:MOVE_DOWN_LEFT2
+    }
+}
+
+export function moveRight2(){
+    return{
+        type:MOVE_UP_RIGHT2
+    }
+}
+
+export function moveUpRight2(){
+    return{
+        type:MOVE_UP_RIGHT2
+    }
+}
+
+export function moveDownRight2(){
+    return{
+        type:MOVE_DOWN_RIGHT2
+    }
+}
+
+export function moveUp2(){
+    return{
+        type:MOVE_UP2
+    }
+}
+
+export function moveDown2(){
+    return{
+        type:MOVE_DOWN2
+    }
+}
+export function collectPiece2(){
+    return{
+        type:COLLECT_PIECE2
+    }
+}
+
+export function getColor2(color){
+    return{
+        type:GET_COLOR2,
+        payload: color
+    }
+}
+
+export function roll2(){
+    return{
+        type:ROLL2
+    }
+}
+
+export function move2(){
+    return{
+        type:MOVE2
     }
 }
