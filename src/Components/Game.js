@@ -3,6 +3,7 @@ import GameBoard from "./GameBoard"
 import GameStats from "./GameStats"
 import LoadGame from "../LoadGame"
 import Turn from "../GamePlay/Turn"
+import "./Game.css"
 
 function Game(){
     const [isLoading, setIsLoading] = useState(true)

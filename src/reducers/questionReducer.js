@@ -15,7 +15,7 @@ const INITIAL_STATE = {
     "purpleQIndex": 0,
     "greenQuestions": [],
     "greenQIndex": 0,
-    "error":false
+    "error":false,
 };
 
 function questionReducer(state = INITIAL_STATE, action){
@@ -45,7 +45,7 @@ function questionReducer(state = INITIAL_STATE, action){
         case NEXT_PINK_INDEX:
             return {...state, pinkQIndex: state.pinkQIndex + 1}
         case NEXT_PURPLE_INDEX:
-            return {...state, purpleQIndex: state.purpleQIndex + 1}
+            return {...state, purpleQIndex: state.purpleQIndex + 1}      
         default:
             return state
     }

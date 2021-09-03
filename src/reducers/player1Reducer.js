@@ -1,13 +1,15 @@
-import { MOVES_LEFT, ROLL, MOVE, GET_QUESTION, GET_COLOR, COLLECT_PIECE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT } from "../actions/actiontypes";
+import { MOVES_LEFT, ROLL, MOVE, GET_QUESTION, GET_COLOR, COLLECT_PIECE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, 
+    MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT, IS_NOT_INITIAL1 } from "../actions/actiontypes";
 
 
 const INITIAL_STATE = {
     "squareColor1":"white",
     "col1": 6,
     "row1": 6,
-    "movesLeft1":0,
+    "movesLeft1": 0,
     "colorsWon1":[],
-    "action1": "Roll"
+    "action1": "Roll",
+    "isInitial1": true
 }
 
 function player1Reducer(state = INITIAL_STATE, action){
@@ -31,7 +33,7 @@ function player1Reducer(state = INITIAL_STATE, action){
         case MOVE_UP_RIGHT:
             return {...state, col1: state.col1 - 1, row1: state.row1 + 1 ,movesLeft1: state.movesLeft1 - 1}
         case COLLECT_PIECE:
-            return {...state, colorsWon1: [...state.colorsWon1, state.squareColor1]}
+            return {...state, colorsWon1: [...state.colorsWon1, state.squareColor1], action1: "Roll"}
         case ROLL:
             return {...state, action1: "Roll"}
         case GET_COLOR:
@@ -40,6 +42,8 @@ function player1Reducer(state = INITIAL_STATE, action){
             return {...state, action1: "Get"}
         case MOVE:
             return {...state, action1: "Move"}
+        case IS_NOT_INITIAL1:
+            return {...state, isInitial1: false}
         default:
             return state
     }

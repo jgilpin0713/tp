@@ -1,0 +1,14 @@
+.Player1 {
+    background-color: white;
+    text-align: center;
+}
+
+.Player2 {
+    background-color: white;
+}
+
+.Table{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}

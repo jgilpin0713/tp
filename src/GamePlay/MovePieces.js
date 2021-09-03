@@ -1,18 +1,19 @@
-import React, {useEffect} from "react"
+import React from "react"
 import {useSelector, useDispatch} from "react-redux"
-import {moveDown, moveUp, moveLeft, moveUpLeft, moveDownLeft, moveUpRight, moveDownRight, moveRight, moveUp2, moveDown2, moveLeft2, moveRight2, moveUpLeft2, moveDownLeft2, moveUpRight2, moveDownRight2, questions} from "../actions/actionCreators"
+import {moveDown, moveUp, moveLeft, moveUpLeft, moveDownLeft, moveUpRight, moveDownRight, moveRight, moveUp2, moveDown2, 
+    moveLeft2, moveRight2, moveUpLeft2, moveDownLeft2, moveUpRight2, moveDownRight2, questions, questions2} from "../actions/actionCreators"
 
 function MovePieces(){
     let dispatch = useDispatch()
     let player  = useSelector(state => state.turn.player)
-    //let player1 = useSelector(state => state.player1.movesLeft1)
-    //let player2 = useSelector(state => state.player2.movesLeft2)
+    let left1 = useSelector(state => state.player1.movesLeft1)
+    let left2 = useSelector(state => state.player2.movesLeft2)
     //console.log(player1)
    // console.log(player2)
     console.log(player)
 
     function handleUp(){
-        if (player === 1){ 
+        if (player === 1 ){ 
            dispatch(moveUp()) 
     }
         if (player ===2){
@@ -73,23 +74,55 @@ function MovePieces(){
             dispatch(moveDownRight2())
         }
     } 
-    useEffect (() => {
-        dispatch(questions())
-    }, [dispatch])     
+
+    if(left1 > 0){
+        return(
+            <div>
+                <p>Select an option:</p>
+                <button onClick = {handleUp}>Up</button>
+                <button onClick = {handleDown}>Down</button>
+                <button onClick = {handleLeft}>Left</button>
+                <button onClick = {handleRight}>Right</button>
+                <button onClick = {handleUpLeft}>Up & Left</button>
+                <button onClick = {handleUpRight}>Up & Right</button>
+                <button onClick = {handleDownLeft}>Down & Left</button>
+                <button onClick = {handleDownRight}>Down & Right</button>
+            </div>
+        ) 
+    } else if (left2 > 0 ){
+        return(
+            <div>
+                <p>Select an option:</p>
+                <button onClick = {handleUp}>Up</button>
+                <button onClick = {handleDown}>Down</button>
+                <button onClick = {handleLeft}>Left</button>
+                <button onClick = {handleRight}>Right</button>
+                <button onClick = {handleUpLeft}>Up & Left</button>
+                <button onClick = {handleUpRight}>Up & Right</button>
+                <button onClick = {handleDownLeft}>Down & Left</button>
+                <button onClick = {handleDownRight}>Down & Right</button>
+            </div>
+        ) 
+    } else {
+        if (player === 1){
+          dispatch(questions())
+        return(
+            <div>
+                <p>Your Question:</p>
+            </div>
+        )  
+        } else {
+            dispatch(questions2())
+            return(
+                <div>
+                    <p>Your Question:</p>
+                </div>
+            )
+        }
+          
+    }
     
-    return(
-        <div>
-            <p>Select an option:</p>
-            <button onClick = {handleUp}>Up</button>
-            <button onClick = {handleDown}>Down</button>
-            <button onClick = {handleLeft}>Left</button>
-            <button onClick = {handleRight}>Right</button>
-            <button onClick = {handleUpLeft}>Up & Left</button>
-            <button onClick = {handleUpRight}>Up & Right</button>
-            <button onClick = {handleDownLeft}>Down & Left</button>
-            <button onClick = {handleDownRight}>Down & Right</button>
-        </div>
-    )
+   
 }
 
 export default MovePieces;

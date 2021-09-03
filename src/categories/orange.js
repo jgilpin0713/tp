@@ -24,62 +24,38 @@ function Orange(){
 
 
 
-    function handleClick(answers){
-        
-        if(answers === correct && piece){
-            if(turn === 1){
-                dispatch(collectPiece())
-                dispatch(roll())
-            return(
-                <div>
-                    <p>You won a piece! Your answer was Correct</p>
-                </div>
-            )
-            } else {
-                dispatch(collectPiece2())
-                dispatch(roll2())
+    function handleClick(answer){
+        if(answer === correct){
+            if(turn === 1 && piece){
                 return(
-                    <div>
-                        <p>You won a piece! Your answer was Correct</p>
-                    </div>
+                    dispatch(collectPiece())
                 )
-            }
-        } else if(answers === correct && !piece){
-            if(turn === 1){
-                dispatch(roll())
-            return(
-                <div>
-                    <p>Your answer was Correct</p>
-                </div>
-            )
-            } else {
-                dispatch(roll2())
-                return(
-                    <div>
-                        <p>Your answer was Correct</p>
-                    </div>
+            } else if (turn === 1 && !piece) {
+                return (
+                    dispatch(roll())
                 )
-            }
-        } else if(answers !== correct){
-            if (turn === 2){
-                dispatch(player1())
-                dispatch(roll())
+            } else if (turn === 2 && piece) {
                 return(
-                    <div>
-                        <p>I'm sorry your answer was incorrect it's Player 1's Turn now</p>
-                    </div>
+                    dispatch(collectPiece2())
+                )
+            } else if (turn === 2 && !piece){
+                return (
+                    dispatch(roll2())
+                )
+            }     
+        } else {
+            if(turn === 2){
+                dispatch(roll2())
+                return (
+                    dispatch(player1())
                 )
             } else {
-                dispatch(player2())
-                dispatch(roll2())
+                dispatch(roll())
                 return(
-                    <div>
-                        <p>I'm sorry your answer was incorrect it's Player 2's Turn now</p>
-                    </div>
+                    dispatch(player2())
                 )
             }
         }
-    
     }
     useEffect (() => {
         dispatch(nextOrange())

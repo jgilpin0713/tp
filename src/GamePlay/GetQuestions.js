@@ -10,56 +10,86 @@ import Home from "../categories/home"
 import {useSelector} from "react-redux"
 
 
+
 function GetQuestions(){
     let color1 = useSelector(state => state.player1.squareColor1)
     let color2 = useSelector(state => state.player2.squareColor2)
     let action11 = useSelector(state => state.player1.action1)
     let action22 = useSelector(state => state.player2.action2)
-
-
-    if ((color1 === "blue" || color2 === "blue") && (action11 === "Get" || action22 === "Get")){
+    let turn = useSelector(state => state.turn.player)
+      
+    if (turn === 1 && action11 === "Get"){
+      if (color1 === "blue" ){
+            return(
+                <Blue />
+            )
+      } else if (color1 === "orange" && action11 === "Get"){
         return(
-          <Blue />  
+          <Orange />  
         )
-        
-    } else if ((color1 === "orange" || color2 === "orange")&& (action11 === "Get" || action22 === "Get")){
+      } else if (color1 === "Purple" && action11 === "Get"){
         return(
-            <Orange />  
-          )
-    }
-    else if ((color1 === "purple" || color2 === "purple") && (action11 === "Get" || action22 === "Get")){
+          <Purple />
+        )
+      } else if (color1 === "yellow" && action11 === "Get"){
         return(
-            <Purple />  
-          )
-    }
-    else if ((color1 === "yellow" || color2 === "yellow") && (action11 === "Get" || action22 === "Get")){
+          <Yellow />
+        )
+      } else if (color1 === "green" && action11 === "Get"){
+        return (
+          <Green />
+        )
+      } else if (color1 === "pink" && action11 === "Get"){
+        return (
+          <Pink />
+        )
+      } else if (color1 === "gray"){
+        return (
+          <RollAgain />
+        )
+      } else if (color1 === "white" || color1 === "orchid"){
         return(
-            <Yellow />  
-          )
-    }
-    else if ((color1 === "green" || color2 === "green") && (action11 === "Get" || action22 === "Get")){
+          <Home />
+        )
+      }
+    }else if(turn === 2 && action22 === "Get") {
+      if (color2 === "blue" ){
         return(
-            <Green />  
+          <Blue />
           )
-    }
-    else if ((color1 === "pink" || color2 === "pink") && (action11 === "Get" || action22 === "Get")){
+      } else if (color2 === "orange" && action22 === "Get"){
         return(
-            <Pink />  
-          )
-    }
-    else if ((color1 === "gray" || color2 === "gray") && (action11 === "Get" || action22 === "Get")){
+          <Orange />  
+        )
+      } else if (color2 === "Purple" && action22 === "Get"){
         return(
-            <RollAgain />  
-          )
-    }
-    else if ((color1 === "white" || color1 === "orchid" || color2 === "white" || color2 === "orchid") && (action11 === "Get" || action22 === "Get")){
+          <Purple />
+        )
+      } else if (color2 === "yellow" && action22 === "Get"){
         return(
-            <Home />  
-          )
-    }else {
+          <Yellow />
+        )
+      } else if (color2 === "green" && action22 === "Get"){
+        return (
+          <Green />
+        )
+      } else if (color2 === "pink" && action22 === "Get"){
+        return (
+          <Pink />
+        )
+      } else if (color2 === "gray"){
+        return (
+          <RollAgain />
+        )
+      } else if (color2 === "white" || color2 === "orchid"){
+        return(
+          <Home />
+        )
+      }
+    } else {
       return(
         <div>
-          <h3>Your Question:</h3>
+          <h3>Your Question: </h3>
         </div>
       )
     }

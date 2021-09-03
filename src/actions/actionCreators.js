@@ -1,11 +1,14 @@
 import { MOVES_LEFT, GET_COLOR, BLUE_SQUARE, ERROR, FETCH_BLUE, FETCH_GREEN, FETCH_ORANGE, FETCH_PINK, FETCH_PURPLE, 
     FETCH_YELLOW, GET_QUESTION, GRAY_SQUARE, GREEN_SQUARE, MOVE, MOVE_DOWN, MOVE_DOWN_LEFT, MOVE_DOWN_RIGHT, MOVE_LEFT, 
     MOVE_RIGHT, MOVE_UP, MOVE_UP_LEFT, MOVE_UP_RIGHT, NEXT_ORANGE_INDEX, NOT_BOARD, ORANGE_SQUARE, PINK_SQUARE, PLAYER_PIECE, PURPLE_SQUARE, 
-    ROLL, ROLL_DICE, TO_PLAYER1, TO_PLAYER2, TURN_END, WHITE_SQUARE, YELLOW_SQUARE, COLLECT_PIECE, NEXT_PINK_INDEX, NEXT_BLUE_INDEX,
+    ROLL, ROLL_DICE, TO_PLAYER1, TO_PLAYER2,  WHITE_SQUARE, YELLOW_SQUARE, COLLECT_PIECE, NEXT_PINK_INDEX, NEXT_BLUE_INDEX,
     NEXT_GREEN_INDEX, NEXT_PURPLE_INDEX, NEXT_YELLOW_INDEX, MAKE_BOARD, MOVE_DOWN_RIGHT2, MOVE_UP2, MOVE_DOWN2, MOVE_UP_RIGHT2, 
-    MOVE_DOWN_LEFT2, MOVE_UP_LEFT2, MOVE_LEFT2, COLLECT_PIECE2, MOVES_LEFT2, GET_COLOR2, MOVE2, ROLL2, ROLL_DICE2 } from "./actiontypes";
+    MOVE_DOWN_LEFT2, MOVE_UP_LEFT2, MOVE_LEFT2, COLLECT_PIECE2, MOVES_LEFT2, GET_COLOR2, MOVE2, ROLL2, ROLL_DICE2, IS_NOT_INITIAL1, 
+    IS_NOT_INITIAL2, GET_QUESTION2 } from "./actiontypes";
 import axios from "axios"
 const BASE_API_URL = "https://opentdb.com/api.php?amount=50&category=";
+
+
 
 export function rollDice(dice){
     return {
@@ -193,11 +196,6 @@ export function player2(){
     }
 }
 
-export function turnEnd(){
-    return{
-        type:TURN_END
-    }
-}
 
 export function playerPiece(){
     return{
@@ -338,6 +336,12 @@ export function questions(){
     }
 }
 
+export function questions2(){
+    return{
+        type:GET_QUESTION2
+    }
+}
+
 export function collectPiece(){
     return{
         type:COLLECT_PIECE
@@ -420,5 +424,16 @@ export function roll2(){
 export function move2(){
     return{
         type:MOVE2
+    }
+}
+
+export function isNotInitial1(){
+    return {
+        type: IS_NOT_INITIAL1
+    }
+}
+export function isNotInitial2(){
+    return {
+        type: IS_NOT_INITIAL2
     }
 }

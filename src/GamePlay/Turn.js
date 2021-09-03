@@ -4,38 +4,31 @@ import GetQuestions from "./GetQuestions"
 import MovePieces from "./MovePieces"
 
 
-
 function Turn(){
-    let turn = useSelector(state => state.turn.player)
-    let action1 = useSelector(state => state.player1.action1)
-    let action2 = useSelector(state => state.player2.action2)
-    let moves1 = useSelector(state => state.player1.movesLeft1) // 4
-    let moves2 = useSelector(state => state.player2.movesLeft2)
-    let color1 = useSelector(state => state.player1.squareColor1)
-    let color2 = useSelector(state => state.player2.squareColor2)
-    console.log(action1, action2, moves1, moves2,  color1, color2)
-    
-    if (turn === 1 && moves1> 0 ){
+    let status1 = useSelector(state => state.player1.action1)
+    let status2 = useSelector(state => state.player2.action2)
+
+    if(status1 === "Move"){
         return (
-            <div>
-                <MovePieces />
-            </div>
+            <MovePieces />
         )
-    } 
-    if (turn === 2 && moves2> 0 ){
+    } else if(status2 === "Move"){
+        return(
+            <MovePieces />
+        )
+    } else if (status1 === "Get"){
+        return(
+            <GetQuestions />
+        )
+    } else if (status2 === "Get"){
+        return(
+            <GetQuestions />
+        )
+    } else {
         return (
-            <div>
-                <h3>You have moves left</h3>
-                <MovePieces />
-            </div>
+            <h3>Rolling...</h3>
         )
     }
-
-    return(
-        <div>
-            <GetQuestions />
-        </div>
-    )
-
+    
 }
 export default Turn

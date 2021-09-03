@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { rollDice, movesLeft, move, rollDice2, move2, movesLeft2 } from "../actions/actionCreators";
+import { movesLeft, move, move2, movesLeft2, isNotInitial1, isNotInitial2 } from "../actions/actionCreators";
 import zero from "./assets/0.png"
 import one from "./assets/1.png"
 import two from "./assets/2.png"
@@ -13,6 +13,7 @@ import six from "./assets/6.png"
 function Dice (){
     let dispatch = useDispatch()
 	let turn = useSelector(state => state.turn.player)
+	
 
 	const [DieResult, setDieResult] = useState(0);
 	let DieImage;
@@ -34,24 +35,22 @@ function Dice (){
   
 	function setDice() {
 	  setDieResult(Math.floor(Math.random() * 6) + 1);
-	 if(turn === 1){
-		dispatch(move()) 
-	 } else {
-		 dispatch(move2())
-	 }
+		if(turn === 1){ //for player 1
+			dispatch(move()) //change state to move
+			dispatch(isNotInitial1())
+		} else if (turn === 2) { // for player 2
+			dispatch(move2())
+			dispatch(isNotInitial2())
+		}
 	  
 	}
 
 	useEffect (() => {
-		
 		if (turn === 1){
 			dispatch(movesLeft(DieResult))
-			dispatch(rollDice(DieResult))	
 		}else {
-			dispatch(movesLeft2)
-			dispatch(rollDice2(DieResult))
+			dispatch(movesLeft2(DieResult))
 		}
-		
     }, [dispatch, DieResult, turn])
 
 	

@@ -24,7 +24,7 @@ function Player1Card(){
                 <h2>Player 1<Piece1 /></h2>
                 <p>Pieces Won:</p>
                 <div>{colors.map((colors, index )=>
-                        <div style={{ backgroundColor: `${colors}`}}> 
+                        <div style={{ backgroundColor: `${colors}`}} key = {index}> 
                             {colors}
                         </div> 
                     )}</div>
